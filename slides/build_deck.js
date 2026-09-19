@@ -124,6 +124,14 @@ async function build() {
     ['up',      fa.FaArrowUp,    ORANGE],
     ['down',    fa.FaArrowDown,  TEAL],
     ['brainW',  fa.FaBrain,      WHITE],
+    ['dna',     gi.GiDna1,       WHITE],
+    ['wheat',   gi.GiWheat,      TEAL],
+    ['meat',    gi.GiMeat,       TEAL],
+    ['molecule',gi.GiMolecule,   TEAL],
+    ['scissors',gi.GiScissors,   ORANGE],
+    ['filter',  fa.FaFilter,     TEAL],
+    ['ban',     fa.FaBan,        TEAL],
+    ['seedling',fa.FaSeedling,   GREEN],
   ];
   for (const [k, C, col] of jobs) I[k] = await iconData(C, col);
 
@@ -847,6 +855,622 @@ async function build() {
       fontFace: K, fontSize: 12, color: 'AFC6D2', align: 'left', valign: 'middle',
     });
     s.addNotes('마무리: 기전 → 효과 → 부작용 → 중단 후 재증가가 하나의 논리로 이어진다는 점을 다시 짚어 주십시오. 질의응답에서 가장 많이 나오는 질문은 (1) 평생 써야 하나요 (2) 근육이 빠지지 않나요 (3) 보험이 되나요 입니다.');
+  }
+
+  // ============================================================
+  // SLIDE 12 — appendix divider (dark)
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: INK };
+    s.addShape(pres.ShapeType.ellipse, {
+      x: 9.9, y: 1.1, w: 4.8, h: 4.8,
+      fill: { color: TEAL, transparency: 78 }, line: { color: '2E6E8A', width: 1.25 },
+    });
+    s.addShape(pres.ShapeType.ellipse, {
+      x: 11.6, y: 3.2, w: 0.66, h: 0.66,
+      fill: { color: ORANGE }, line: { type: 'none' },
+    });
+
+    s.addText([{ text: '부록 · APPENDIX', options: {} }], {
+      x: M, y: 1.60, w: 8.6, h: 0.4, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 15, bold: true, color: 'E9A87C', charSpacing: 1.5,
+      align: 'left', valign: 'middle',
+    });
+    s.addText([
+      { text: 'GLP-1의 분비조절과', options: { breakLine: true } },
+      { text: '수용체 신호전달', options: {} },
+    ], {
+      x: M, y: 2.10, w: 8.8, h: 1.9, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 38, bold: true, color: WHITE, lineSpacingMultiple: 1.2,
+      align: 'left', valign: 'top',
+    });
+    s.addText([{ text: '대상: 의료진 · 대학원생.  앞의 1~11장은 일반인 설명용이며,\n이 장부터는 생리학 용어를 그대로 사용합니다.', options: {} }], {
+      x: M, y: 4.18, w: 8.3, h: 0.95, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 14.5, color: 'AFC6D2', lineSpacingMultiple: 1.45,
+      align: 'left', valign: 'top',
+    });
+
+    const topics = ['프로글루카곤 가공', 'L세포 영양소 감지', '이상성 분비와 조절', '수용체 신호전달'];
+    const cgap = 0.22, cw2 = (8.8 - cgap * 3) / 4;
+    topics.forEach((t, i) => {
+      const x = M + i * (cw2 + cgap);
+      s.addShape(pres.ShapeType.roundRect, {
+        x, y: 5.45, w: cw2, h: 0.62,
+        fill: { color: INK_SOFT }, line: { color: '2E5468', width: 1 }, rectRadius: 0.10,
+      });
+      s.addText([{ text: t, options: {} }], {
+        x, y: 5.45, w: cw2, h: 0.62, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 11, bold: true, color: 'BCDCE9', align: 'center', valign: 'middle',
+      });
+    });
+    s.addNotes('여기서부터는 청중을 바꿔 잡으십시오. 일반인 대상 발표에서는 11장에서 끝내고, 의료진·대학원생 대상에서는 1~11장을 빠르게 넘긴 뒤 이 부록에 시간을 쓰는 구성을 권합니다.');
+  }
+
+  // ============================================================
+  // SLIDE 13 — proglucagon processing
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, '하나의 유전자, 조직마다 다른 산물');
+    kicker(s, '프로글루카곤은 어떤 전환효소가 작용하느냐에 따라 전혀 다른 호르몬으로 잘립니다.');
+
+    const hubW = 8.7, hubH = 0.82, hubY = 1.72, hubCx = W / 2;
+    s.addShape(pres.ShapeType.roundRect, {
+      x: hubCx - hubW / 2, y: hubY, w: hubW, h: hubH,
+      fill: { color: TEAL }, line: { type: 'none' }, rectRadius: 0.41, shadow: cardShadow(),
+    });
+    iconBadge(s, pres, hubCx - hubW / 2 + 0.52, hubY + hubH / 2, 0.56, I.dna, { bg: TEAL_DEEP, scale: 0.55 });
+    s.addText([{ text: '프로글루카곤 유전자 (GCG)  →  프로글루카곤 (160 아미노산)', options: {} }], {
+      x: hubCx - hubW / 2 + 0.92, y: hubY, w: hubW - 1.2, h: hubH, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 15, bold: true, color: WHITE, align: 'left', valign: 'middle',
+    });
+
+    const pw = (W - 2 * M - 0.40) / 2;
+    const py = 3.02, ph = 2.28;
+    const centers = [M + pw / 2, M + pw + 0.40 + pw / 2];
+    const railY = 2.78;
+    s.addShape(pres.ShapeType.line, { x: hubCx, y: hubY + hubH, w: 0, h: railY - (hubY + hubH), line: { color: SLATE_LT, width: 1.75 } });
+    s.addShape(pres.ShapeType.line, { x: centers[0], y: railY, w: centers[1] - centers[0], h: 0, line: { color: SLATE_LT, width: 1.75 } });
+    centers.forEach(cx => s.addShape(pres.ShapeType.line, { x: cx, y: railY, w: 0, h: py - railY - 0.04, line: { color: SLATE_LT, width: 1.75, endArrowType: 'triangle' } }));
+
+    const branches = [
+      { x: M, tissue: '췌장 α세포', enz: '전환효소 PC2', prods: '글루카곤 · GRPP · IP-1\n주요 프로글루카곤 절편(MPGF)', accent: false },
+      { x: M + pw + 0.40, tissue: '장 L세포 · 후뇌(NTS)', enz: '전환효소 PC1/3', prods: 'GLP-1 · GLP-2\n글리센틴 · 옥신토모듈린', accent: true },
+    ];
+    branches.forEach(b => {
+      card(s, pres, b.x, py, pw, ph, { fill: b.accent ? ORANGE_TINT : WHITE, line: b.accent ? 'F0CDB6' : BORDER });
+      s.addText([{ text: b.tissue, options: {} }], {
+        x: b.x + 0.34, y: py + 0.26, w: pw - 0.68, h: 0.42, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 18, bold: true, color: b.accent ? ORANGE : TEAL_DEEP, align: 'left', valign: 'middle',
+      });
+      s.addShape(pres.ShapeType.roundRect, {
+        x: b.x + 0.34, y: py + 0.76, w: 1.85, h: 0.34,
+        fill: { color: b.accent ? WHITE : TEAL_TINT }, line: { type: 'none' }, rectRadius: 0.07,
+      });
+      s.addText([{ text: b.enz, options: {} }], {
+        x: b.x + 0.34, y: py + 0.76, w: 1.85, h: 0.34, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 10.5, bold: true, color: b.accent ? ORANGE : TEAL_DEEP, align: 'center', valign: 'middle',
+      });
+      s.addText([{ text: b.prods, options: {} }], {
+        x: b.x + 0.34, y: py + 1.24, w: pw - 0.68, h: 0.86, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 13, color: INK_SOFT, lineSpacingMultiple: 1.35, align: 'left', valign: 'top',
+      });
+    });
+
+    const by = 5.56;
+    card(s, pres, M, by, W - 2 * M, 0.88, { fill: TEAL_TINT, line: 'C3DBE6' });
+    s.addText([
+      { text: '사람에서 활성형 GLP-1은 GLP-1(7-37)과 GLP-1(7-36)amide 두 가지이며, 순환 중에는 (7-36)amide가 대부분을 차지합니다.', options: { color: INK_SOFT } },
+    ], {
+      x: M + 0.34, y: by, w: W - 2 * M - 0.68, h: 0.88, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 13, align: 'left', valign: 'middle',
+    });
+
+    footnote(s, '출처: Holst JJ. Physiol Rev 2007;87:1409 · Müller TD 외. Mol Metab 2019;30:72.', { y: 6.62 });
+    s.addNotes('같은 mRNA에서 조직 특이적 prohormone convertase 발현에 따라 다른 펩타이드가 나온다는 점이 핵심입니다. PC1/3는 장 L세포와 후뇌 NTS 뉴런에서, PC2는 췌장 α세포에서 우세합니다.');
+  }
+
+  // ============================================================
+  // SLIDE 14 — L-cell nutrient sensing (core secretion diagram)
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, 'L세포는 장 내강의 영양소를 직접 감지합니다');
+    kicker(s, 'L세포는 내강 쪽으로 미세융모를 내민 개방형(open-type) 장내분비세포입니다.');
+
+    // ---- left: L-cell schematic
+    const px = M, py = 1.75, pw = 3.75, ph = 4.15;
+    card(s, pres, px, py, pw, ph, { fill: WHITE });
+
+    s.addShape(pres.ShapeType.roundRect, {
+      x: px + 0.20, y: py + 0.22, w: pw - 0.40, h: 0.52,
+      fill: { color: AMBER_TINT }, line: { type: 'none' }, rectRadius: 0.08,
+    });
+    s.addText([{ text: '장 내강 (lumen) — 음식물', options: {} }], {
+      x: px + 0.20, y: py + 0.22, w: pw - 0.40, h: 0.52, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 11, bold: true, color: AMBER, align: 'center', valign: 'middle',
+    });
+
+    for (let i = 0; i < 7; i++) {
+      const mx = px + 0.78 + i * 0.36;
+      s.addShape(pres.ShapeType.line, { x: mx, y: py + 0.80, w: 0, h: 0.22, line: { color: TEAL, width: 2 } });
+    }
+
+    s.addShape(pres.ShapeType.roundRect, {
+      x: px + 0.55, y: py + 1.02, w: pw - 1.10, h: 2.05,
+      fill: { color: TEAL_TINT }, line: { color: TEAL, width: 1.25 }, rectRadius: 0.10,
+    });
+    s.addText([{ text: 'L세포', options: {} }], {
+      x: px + 0.60, y: py + 1.15, w: pw - 1.20, h: 0.38, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 17, bold: true, color: TEAL_DEEP, align: 'center', valign: 'middle',
+    });
+    s.addText([{ text: '미세융모로 내강의\n영양소를 직접 감지', options: {} }], {
+      x: px + 0.60, y: py + 1.56, w: pw - 1.20, h: 0.56, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 10, color: TEAL_DEEP, lineSpacingMultiple: 1.25, align: 'center', valign: 'top',
+    });
+    for (let i = 0; i < 4; i++) {
+      s.addShape(pres.ShapeType.ellipse, {
+        x: px + 1.04 + i * 0.42, y: py + 2.26, w: 0.19, h: 0.19,
+        fill: { color: ORANGE }, line: { type: 'none' },
+      });
+    }
+    s.addText([{ text: '분비과립 (GLP-1)', options: {} }], {
+      x: px + 0.60, y: py + 2.55, w: pw - 1.20, h: 0.30, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 9.5, color: SLATE, align: 'center', valign: 'middle',
+    });
+
+    s.addShape(pres.ShapeType.line, {
+      x: px + pw / 2, y: py + 3.07, w: 0, h: 0.36,
+      line: { color: ORANGE, width: 2.25, endArrowType: 'triangle' },
+    });
+    s.addShape(pres.ShapeType.roundRect, {
+      x: px + 0.20, y: py + 3.45, w: pw - 0.40, h: 0.52,
+      fill: { color: ORANGE_TINT }, line: { type: 'none' }, rectRadius: 0.08,
+    });
+    s.addText([{ text: '기저측면 → 혈액 · 문맥', options: {} }], {
+      x: px + 0.20, y: py + 3.45, w: pw - 0.40, h: 0.52, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 11, bold: true, color: ORANGE, align: 'center', valign: 'middle',
+    });
+
+    // ---- right: four sensor cards
+    const rx0 = M + pw + 0.34;
+    const rwTot = W - M - rx0;
+    const cgap = 0.26;
+    const cw = (rwTot - cgap) / 2;
+    const chh = 1.93;
+
+    const sensors = [
+      { ic: I.wheat, h: '탄수화물 (포도당)',
+        b: 'SGLT1을 통한 전기생성적 Na⁺–포도당 공동수송 → 막 탈분극, KATP 통로 폐쇄 → 전압의존 Ca²⁺ 유입' },
+      { ic: I.drop, h: '지방 (장쇄지방산 · 2-MAG)',
+        b: 'FFAR1(GPR40) · FFAR4(GPR120) · GPR119 → Gq/Gs 경로로 세포내 Ca²⁺ 및 cAMP 상승' },
+      { ic: I.meat, h: '단백질 (펩톤 · 아미노산)',
+        b: '칼슘감지수용체(CaSR), 펩타이드 수송체 PepT1을 통해 세포내 Ca²⁺ 상승' },
+      { ic: I.molecule, h: '담즙산 · 단쇄지방산(SCFA)',
+        b: '담즙산 → TGR5(GPBAR1). 장내미생물이 식이섬유를 발효해 만든 SCFA → FFAR2(GPR43) · FFAR3(GPR41)' },
+    ];
+    sensors.forEach((sn, i) => {
+      const x = rx0 + (i % 2) * (cw + cgap);
+      const y = py + Math.floor(i / 2) * (chh + cgap);
+      card(s, pres, x, y, cw, chh, { fill: WHITE });
+      iconBadge(s, pres, x + 0.46, y + 0.46, 0.58, sn.ic, { bg: TEAL_TINT, scale: 0.5 });
+      s.addText([{ text: sn.h, options: {} }], {
+        x: x + 0.84, y: y + 0.22, w: cw - 1.05, h: 0.48, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 13.5, bold: true, color: TEAL_DEEP, align: 'left', valign: 'middle',
+      });
+      s.addText([{ text: sn.b, options: {} }], {
+        x: x + 0.26, y: y + 0.80, w: cw - 0.52, h: 1.00, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 11, color: SLATE, lineSpacingMultiple: 1.3, align: 'left', valign: 'top',
+      });
+    });
+
+    const by = 6.04;
+    card(s, pres, M, by, W - 2 * M, 0.60, { fill: TEAL_TINT, line: 'C3DBE6', shadow: false });
+    s.addText([
+      { text: '공통 종착점  ', options: { bold: true, color: TEAL_DEEP } },
+      { text: '세포내 Ca²⁺ ↑ · cAMP ↑  →  분비과립 개구분비  →  GLP-1 방출', options: { color: INK_SOFT } },
+    ], {
+      x: M + 0.34, y: by, w: W - 2 * M - 0.68, h: 0.60, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 12.5, align: 'left', valign: 'middle',
+    });
+
+    footnote(s, '출처: Gribble FM, Reimann F. Nat Rev Endocrinol 2019;15:226 · Müller TD 외. Mol Metab 2019;30:72.', { y: 6.74 });
+    s.addNotes('L세포가 개방형이라는 점, 즉 내강 영양소에 직접 노출된다는 점이 분비조절 이해의 출발점입니다. L세포 밀도는 원위 회장과 결장에서 가장 높지만 십이지장에도 존재합니다. SCFA 경로는 식이섬유·장내미생물과 GLP-1을 잇는 연결고리로, 최근 관심이 큰 영역입니다.');
+  }
+
+  // ============================================================
+  // SLIDE 15 — biphasic secretion and its regulation
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, '식후 GLP-1은 두 단계로 올라갑니다');
+    kicker(s, '영양소가 원위 L세포에 닿기 전부터 혈중 농도가 오르는 것이 오래된 관찰입니다.');
+
+    const pw = (W - 2 * M - 0.40) / 2;
+    const py = 1.74, ph = 2.02;
+    const phases = [
+      { x: M, tag: '1단계 · 조기', time: '식후 약 10~15분', accent: true,
+        b: '영양소가 원위 장에 도달하기 전에 이미 상승합니다. 근위 장 자극이 미주신경 및 내분비 신호를 거쳐 원위 L세포를 활성화한다는 “근위–원위 축”으로 설명되어 왔습니다.' },
+      { x: M + pw + 0.40, tag: '2단계 · 후기', time: '식후 약 30~60분', accent: false,
+        b: '영양소가 원위 회장과 결장의 L세포에 직접 닿아 앞 장에서 본 수용체·수송체를 통해 분비를 일으킵니다.' },
+    ];
+    phases.forEach(p => {
+      card(s, pres, p.x, py, pw, ph, { fill: p.accent ? ORANGE_TINT : WHITE, line: p.accent ? 'F0CDB6' : BORDER });
+      s.addText([{ text: p.tag, options: {} }], {
+        x: p.x + 0.34, y: py + 0.22, w: pw - 2.4, h: 0.42, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 17, bold: true, color: p.accent ? ORANGE : TEAL_DEEP, align: 'left', valign: 'middle',
+      });
+      s.addShape(pres.ShapeType.roundRect, {
+        x: p.x + pw - 2.30, y: py + 0.24, w: 1.96, h: 0.38,
+        fill: { color: p.accent ? WHITE : TEAL_TINT }, line: { type: 'none' }, rectRadius: 0.08,
+      });
+      s.addText([{ text: p.time, options: {} }], {
+        x: p.x + pw - 2.30, y: py + 0.24, w: 1.96, h: 0.38, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 11, bold: true, color: p.accent ? ORANGE : TEAL_DEEP, align: 'center', valign: 'middle',
+      });
+      s.addText([{ text: p.b, options: {} }], {
+        x: p.x + 0.34, y: py + 0.76, w: pw - 0.68, h: 1.10, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 11.5, color: SLATE, lineSpacingMultiple: 1.35, align: 'left', valign: 'top',
+      });
+    });
+
+    s.addText([{ text: '분비를 조절하는 다른 신호', options: {} }], {
+      x: M, y: 3.92, w: W - 2 * M, h: 0.34, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 13.5, bold: true, color: INK, align: 'left', valign: 'middle',
+    });
+    const regs = [
+      { ic: I.brain, h: '미주신경', b: '구심성·원심성 섬유가 모두 관여하며, 조기 분비 가설의 핵심 경로입니다.' },
+      { ic: I.ban, h: '소마토스타틴', b: 'δ세포에서 분비되어 SSTR5를 통해 L세포 분비를 억제하는 주변분비 음성 되먹임입니다.' },
+      { ic: I.drop, h: '인슐린 등 대사 신호', b: '인슐린을 포함한 전신 대사 신호도 L세포 분비에 되먹임으로 작용합니다.' },
+    ];
+    const rg = 0.30, rw = (W - 2 * M - rg * 2) / 3, ry = 4.32, rh = 1.44;
+    regs.forEach((r, i) => {
+      const x = M + i * (rw + rg);
+      card(s, pres, x, ry, rw, rh, { fill: WHITE });
+      iconBadge(s, pres, x + 0.46, ry + 0.44, 0.56, r.ic, { bg: TEAL_TINT, scale: 0.5 });
+      s.addText([{ text: r.h, options: {} }], {
+        x: x + 0.84, y: ry + 0.22, w: rw - 1.05, h: 0.44, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 14, bold: true, color: TEAL_DEEP, align: 'left', valign: 'middle',
+      });
+      s.addText([{ text: r.b, options: {} }], {
+        x: x + 0.26, y: ry + 0.76, w: rw - 0.52, h: 0.60, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 10.5, color: SLATE, lineSpacingMultiple: 1.25, align: 'left', valign: 'top',
+      });
+    });
+
+    const by = 5.92;
+    card(s, pres, M, by, W - 2 * M, 0.82, { fill: AMBER_TINT, line: 'EBD9B4', shadow: false });
+    iconBadge(s, pres, M + 0.52, by + 0.41, 0.52, I.quest, { bg: WHITE, scale: 0.42 });
+    s.addText([
+      { text: '논쟁 중  ', options: { bold: true, color: AMBER } },
+      { text: '조기 분비의 신경·내분비 기전은 설치류 자료가 주를 이루며, 사람에서 각 경로가 얼마나 기여하는지는 아직 정리되지 않았습니다. GIP의 역할도 종에 따라 다르게 보고됩니다.', options: { color: INK_SOFT } },
+    ], {
+      x: M + 0.94, y: by, w: W - 2 * M - 1.20, h: 0.82, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 11.5, lineSpacingMultiple: 1.3, align: 'left', valign: 'middle',
+    });
+
+    footnote(s, '출처: Holst JJ. Physiol Rev 2007;87:1409 · Nauck MA, Meier JJ. Diabetes Obes Metab 2018;20(Suppl 1):5.', { y: 6.84 });
+    s.addNotes('이상성 분비는 교과서적 서술이지만, 조기 상승의 기전은 여전히 논쟁적입니다. 근위–원위 축(proximal-distal loop)은 설치류에서 비교적 잘 기술되어 있으나 사람에서의 상대적 기여도는 확립되지 않았습니다. 십이지장에도 L세포가 있어 직접 자극이 조기 상승의 일부를 설명할 수 있다는 견해도 있습니다.');
+  }
+
+  // ============================================================
+  // SLIDE 16 — degradation and clearance
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, '분비된 GLP-1은 대부분 전신 순환에 닿기 전에 잘립니다');
+    kicker(s, '이 사실이 “내인성 GLP-1은 어떻게 작동하는가”라는 질문의 출발점입니다.');
+
+    const steps = [
+      { n: '1', ic: I.chem, h: 'L세포에서 분비', b: '활성형 GLP-1(7-36)amide가 기저측면으로 방출됩니다.' },
+      { n: '2', ic: I.scissors, h: 'DPP-4가 절단', b: 'DPP-4가 N말단 2번 알라닌 뒤를 잘라 불활성형 GLP-1(9-36)amide로 바꿉니다.', accent: true },
+      { n: '3', ic: I.liver, h: '문맥 → 간 통과', b: '간을 지나며 추가로 제거되고, 신장에서도 청소됩니다.' },
+      { n: '4', ic: I.filter, h: '전신 순환 도달', b: '활성형으로 전신 순환에 도달하는 양은 분비량의 약 10~15%로 추정됩니다.' },
+    ];
+    const gap = 0.44;
+    const cw = (W - 2 * M - gap * 3) / 4;
+    const cy = 1.84, ch = 2.56;
+    steps.forEach((st, i) => {
+      const x = M + i * (cw + gap);
+      card(s, pres, x, cy, cw, ch, { fill: st.accent ? ORANGE_TINT : WHITE, line: st.accent ? 'F0CDB6' : BORDER });
+      numDot(s, pres, x + 0.18, cy + 0.18, 0.38, st.n, { fill: st.accent ? ORANGE : TEAL, size: 12 });
+      iconBadge(s, pres, x + cw / 2, cy + 0.86, 0.72, st.ic, { bg: st.accent ? WHITE : TEAL_TINT, scale: 0.5 });
+      s.addText([{ text: st.h, options: {} }], {
+        x: x + 0.14, y: cy + 1.32, w: cw - 0.28, h: 0.36, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 14, bold: true, color: st.accent ? ORANGE : TEAL_DEEP, align: 'center', valign: 'middle',
+      });
+      s.addText([{ text: st.b, options: {} }], {
+        x: x + 0.18, y: cy + 1.70, w: cw - 0.36, h: 0.76, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 10.5, color: SLATE, lineSpacingMultiple: 1.25, align: 'center', valign: 'top',
+      });
+      if (i < 3) {
+        s.addShape(pres.ShapeType.rightArrow, {
+          x: x + cw + 0.06, y: cy + 0.72, w: 0.30, h: 0.28,
+          fill: { color: SLATE_LT }, line: { type: 'none' },
+        });
+      }
+    });
+
+    const cw2 = (W - 2 * M - 0.36) / 2;
+    const cy2 = 4.58, ch2 = 1.52;
+    card(s, pres, M, cy2, cw2, ch2, { fill: WHITE });
+    s.addText([{ text: '내인성 GLP-1 — 주로 “신경” 경로', options: {} }], {
+      x: M + 0.34, y: cy2 + 0.22, w: cw2 - 0.68, h: 0.40, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 15, bold: true, color: TEAL_DEEP, align: 'left', valign: 'middle',
+    });
+    s.addText([{ text: '전신 농도가 낮아도 효과가 나타나는 이유로, 장·문맥 주위 미주신경 구심성 섬유의 GLP-1 수용체를 국소적으로 자극한다는 설명이 제시되어 있습니다.', options: {} }], {
+      x: M + 0.34, y: cy2 + 0.68, w: cw2 - 0.68, h: 0.78, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 11.5, color: SLATE, lineSpacingMultiple: 1.3, align: 'left', valign: 'top',
+    });
+
+    const rx2 = M + cw2 + 0.36;
+    s.addShape(pres.ShapeType.roundRect, {
+      x: rx2, y: cy2, w: cw2, h: ch2,
+      fill: { color: TEAL }, line: { type: 'none' }, rectRadius: 0.09, shadow: cardShadow(),
+    });
+    s.addText([{ text: '약물 — “내분비” 경로', options: {} }], {
+      x: rx2 + 0.34, y: cy2 + 0.22, w: cw2 - 0.68, h: 0.40, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 15, bold: true, color: WHITE, align: 'left', valign: 'middle',
+    });
+    s.addText([{ text: 'DPP-4 분해에 저항하도록 만든 작용제는 초생리적 농도로 전신 순환을 돌며 각 조직의 수용체를 직접 자극합니다. 같은 수용체지만 작동 방식은 다릅니다.', options: {} }], {
+      x: rx2 + 0.34, y: cy2 + 0.68, w: cw2 - 0.68, h: 0.78, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 11.5, color: 'D6EAF2', lineSpacingMultiple: 1.3, align: 'left', valign: 'top',
+    });
+
+    footnote(s, 'DPP-4는 장 고유층 모세혈관 내피에 특히 풍부합니다. GLP-1(9-36)amide가 완전히 불활성인지는 아직 정리되지 않았습니다. 출처: Holst JJ. Physiol Rev 2007;87:1409.', { y: 6.26 });
+    s.addNotes('약 10~15%라는 수치는 추정치이며 측정법과 연구에 따라 폭이 있습니다. 중요한 것은 정확한 숫자가 아니라, 내인성 GLP-1의 생리적 작용을 전신 호르몬 농도만으로 설명하기 어렵다는 점입니다. 이 구분이 다음 장의 내인성-약물 비교로 이어집니다.');
+  }
+
+  // ============================================================
+  // SLIDE 17 — receptor signalling
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, 'GLP-1 수용체에서 인슐린 분비까지');
+    kicker(s, 'GLP-1R는 class B1 GPCR이며, β세포에서 cAMP를 축으로 두 갈래로 신호를 내려보냅니다.');
+
+    const lw = 7.62, ly = 1.76;
+    card(s, pres, M, ly, lw, 4.52, { fill: WHITE });
+
+    const chain = [
+      { t: 'GLP-1R (class B1 GPCR, 7회 막관통)', c: TEAL_DEEP, b: true },
+      { t: 'Gαs → 아데닐산 고리화효소', c: INK_SOFT, b: false },
+      { t: '세포내 cAMP 상승', c: ORANGE, b: true },
+    ];
+    chain.forEach((cl, i) => {
+      const y = ly + 0.28 + i * 0.74;
+      s.addShape(pres.ShapeType.roundRect, {
+        x: M + 0.40, y, w: lw - 0.80, h: 0.52,
+        fill: { color: i === 2 ? ORANGE_TINT : TEAL_TINT }, line: { type: 'none' }, rectRadius: 0.08,
+      });
+      s.addText([{ text: cl.t, options: {} }], {
+        x: M + 0.40, y, w: lw - 0.80, h: 0.52, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 13, bold: cl.b, color: cl.c, align: 'center', valign: 'middle',
+      });
+      if (i < 2) {
+        s.addShape(pres.ShapeType.line, {
+          x: M + lw / 2, y: y + 0.52, w: 0, h: 0.20,
+          line: { color: SLATE_LT, width: 1.75, endArrowType: 'triangle' },
+        });
+      }
+    });
+
+    const forkY = ly + 2.50;
+    const bw = (lw - 0.80 - 0.28) / 2;
+    s.addShape(pres.ShapeType.line, { x: M + lw / 2, y: ly + 2.02, w: 0, h: 0.22, line: { color: SLATE_LT, width: 1.75 } });
+    s.addShape(pres.ShapeType.line, { x: M + 0.40 + bw / 2, y: ly + 2.24, w: bw + 0.28, h: 0, line: { color: SLATE_LT, width: 1.75 } });
+    [M + 0.40 + bw / 2, M + 0.40 + bw + 0.28 + bw / 2].forEach(cx => {
+      s.addShape(pres.ShapeType.line, { x: cx, y: ly + 2.24, w: 0, h: 0.22, line: { color: SLATE_LT, width: 1.75, endArrowType: 'triangle' } });
+    });
+    [['PKA 경로', 'KATP 통로 폐쇄를 촉진하고\n이온 통로를 인산화합니다'], ['Epac2 (RAPGEF4) 경로', '세포내 저장 Ca²⁺을 동원하고\n분비과립을 형질막에 대기시킵니다']]
+      .forEach((b, i) => {
+        const x = M + 0.40 + i * (bw + 0.28);
+        s.addShape(pres.ShapeType.roundRect, {
+          x, y: forkY, w: bw, h: 1.06,
+          fill: { color: TEAL_TINT }, line: { type: 'none' }, rectRadius: 0.08,
+        });
+        s.addText([{ text: b[0], options: {} }], {
+          x, y: forkY + 0.12, w: bw, h: 0.32, isTextBox: true, margin: 0,
+          fontFace: K, fontSize: 13, bold: true, color: TEAL_DEEP, align: 'center', valign: 'middle',
+        });
+        s.addText([{ text: b[1], options: {} }], {
+          x: x + 0.14, y: forkY + 0.46, w: bw - 0.28, h: 0.52, isTextBox: true, margin: 0,
+          fontFace: K, fontSize: 10.5, color: SLATE, lineSpacingMultiple: 1.2, align: 'center', valign: 'top',
+        });
+      });
+
+    const gy = forkY + 1.24;
+    s.addShape(pres.ShapeType.roundRect, {
+      x: M + 0.40, y: gy, w: lw - 0.80, h: 0.72,
+      fill: { color: AMBER_TINT }, line: { color: 'EBD9B4', width: 1 }, rectRadius: 0.08,
+    });
+    s.addText([
+      { text: '포도당 의존성의 분자적 근거  ', options: { bold: true, color: AMBER } },
+      { text: '이 증폭은 포도당 대사로 ATP/ADP 비가 이미 올라가 있을 때만 인슐린 분비로 이어집니다.', options: { color: INK_SOFT } },
+    ], {
+      x: M + 0.58, y: gy, w: lw - 1.16, h: 0.72, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 11.5, lineSpacingMultiple: 1.3, align: 'left', valign: 'middle',
+    });
+
+    // right column
+    const rx = M + lw + 0.34;
+    const rw = W - M - rx;
+    card(s, pres, rx, ly, rw, 2.12, { fill: WHITE });
+    s.addText([{ text: '수용체가 분포하는 곳', options: {} }], {
+      x: rx + 0.32, y: ly + 0.22, w: rw - 0.64, h: 0.38, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 14, bold: true, color: TEAL_DEEP, align: 'left', valign: 'middle',
+    });
+    s.addText([
+      { text: '췌장 β세포 · δ세포', options: { bullet: true, breakLine: true } },
+      { text: '위 · 심방 · 신장 · 폐', options: { bullet: true, breakLine: true } },
+      { text: '뇌 — 시상하부 궁상핵, 후뇌 최후야(area postrema) · 고립로핵(NTS)', options: { bullet: true, breakLine: true } },
+      { text: '미주신경 구심성 섬유', options: { bullet: true } },
+    ], {
+      x: rx + 0.36, y: ly + 0.64, w: rw - 0.72, h: 1.34, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 10.5, color: INK_SOFT, paraSpaceAfter: 5, lineSpacingMultiple: 1.2,
+      align: 'left', valign: 'top',
+    });
+
+    const ry2 = ly + 2.32;
+    card(s, pres, rx, ry2, rw, 4.52 - 2.32, { fill: AMBER_TINT, line: 'EBD9B4' });
+    s.addText([{ text: '논쟁 중 — α세포', options: {} }], {
+      x: rx + 0.32, y: ry2 + 0.22, w: rw - 0.64, h: 0.38, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 14, bold: true, color: AMBER, align: 'left', valign: 'middle',
+    });
+    s.addText([{ text: 'α세포에서는 GLP-1R 발현이 낮거나 검출되지 않는다는 보고가 많습니다. 그래서 글루카곤 억제를 δ세포의 소마토스타틴을 경유한 간접 작용으로 보는 견해가 우세하지만, 직접 작용을 지지하는 자료도 있어 확정되지 않았습니다.', options: {} }], {
+      x: rx + 0.36, y: ry2 + 0.64, w: rw - 0.72, h: 1.36, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 10.5, color: INK_SOFT, lineSpacingMultiple: 1.28, align: 'left', valign: 'top',
+    });
+
+    footnote(s, '출처: Drucker DJ. Cell Metab 2018;27:740 · Müller TD 외. Mol Metab 2019;30:72.', { y: 6.42 });
+    s.addNotes('cAMP–PKA와 cAMP–Epac2 두 갈래가 인슐린 과립의 개구분비를 증폭합니다. 포도당 의존성은 KATP 통로가 포도당 대사에 의해 닫혀 있어야 한다는 전제에서 나옵니다. β-arrestin 모집과 수용체 내재화, 편향 작용제(biased agonism)는 신약 개발에서 활발히 연구되는 영역입니다.');
+  }
+
+  // ============================================================
+  // SLIDE 18 — endogenous vs pharmacological
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, '내인성 GLP-1과 약물은 같은 수용체, 다른 작동 방식');
+    kicker(s, '두 가지를 같은 것으로 놓고 설명하면 효과와 부작용이 모두 어긋납니다.');
+
+    const hdr = (t, fill, col) => ({ text: t, options: { fill: { color: fill }, color: col, bold: true, fontSize: 12.5, fontFace: K, align: 'left', valign: 'middle', margin: [0, 0.14, 0, 0.14] } });
+    const cell = (t, o) => ({ text: t, options: Object.assign({ fontSize: 11.5, fontFace: K, color: INK_SOFT, valign: 'middle', align: 'left', margin: [0, 0.14, 0, 0.14], fill: { color: WHITE } }, o || {}) });
+
+    const rows = [
+      [hdr('항목', SLATE, WHITE), hdr('내인성 GLP-1', TEAL, WHITE), hdr('GLP-1 수용체 작용제', ORANGE, WHITE)],
+      [cell('혈중 농도', { bold: true, color: TEAL_DEEP, fill: { color: PAPER } }),
+       cell('식후 pmol/L 수준으로 일시적'), cell('초생리적 농도가 지속', { fill: { color: ORANGE_TINT } })],
+      [cell('반감기', { bold: true, color: TEAL_DEEP, fill: { color: PAPER } }),
+       cell('1~2분'), cell('약 13시간(리라글루타이드) ~ 약 1주(세마글루타이드)', { fill: { color: ORANGE_TINT } })],
+      [cell('주된 전달 경로', { bold: true, color: TEAL_DEEP, fill: { color: PAPER } }),
+       cell('장·문맥 주위 미주신경 구심성 — 국소 신경 신호'), cell('전신 순환을 통한 수용체 직접 자극', { fill: { color: ORANGE_TINT } })],
+      [cell('위 배출', { bold: true, color: TEAL_DEEP, fill: { color: PAPER } }),
+       cell('생리적 범위의 조절'), cell('뚜렷한 지연. 장기 사용 시 감약(tachyphylaxis) 보고', { fill: { color: ORANGE_TINT } })],
+      [cell('식욕 억제', { bold: true, color: TEAL_DEEP, fill: { color: PAPER } }),
+       cell('제한적 — 생리적 기여도는 논쟁 중'), cell('뚜렷함 — 후뇌·시상하부에 직접 작용', { fill: { color: ORANGE_TINT } })],
+      [cell('임상적 결과', { bold: true, color: TEAL_DEEP, fill: { color: PAPER } }),
+       cell('식후 혈당의 미세 조정'), cell('의미 있는 체중·혈당 감소, 위장관 부작용 동반', { fill: { color: ORANGE_TINT } })],
+    ];
+
+    s.addTable(rows, {
+      x: M, y: 1.76, w: W - 2 * M,
+      colW: [2.45, 4.30, 5.483],
+      rowH: 0.52,
+      border: { type: 'solid', color: BORDER, pt: 1 },
+      autoPage: false,
+    });
+
+    const by = 5.86;
+    card(s, pres, M, by, W - 2 * M, 0.84, { fill: TEAL_TINT, line: 'C3DBE6', shadow: false });
+    s.addText([
+      { text: '요약  ', options: { bold: true, color: TEAL_DEEP } },
+      { text: '약물의 체중 감소 효과는 “내인성 GLP-1을 보충한 것”이 아니라, 생리적 범위를 넘어선 수용체 자극에서 나옵니다. 위장관 부작용이 함께 따라오는 이유도 같습니다.', options: { color: INK_SOFT } },
+    ], {
+      x: M + 0.34, y: by, w: W - 2 * M - 0.68, h: 0.84, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 12.5, lineSpacingMultiple: 1.3, align: 'left', valign: 'middle',
+    });
+
+    footnote(s, '출처: Nauck MA, Meier JJ. Diabetes Obes Metab 2018;20(Suppl 1):5 · Drucker DJ. Cell Metab 2018;27:740.', { y: 6.84 });
+    s.addNotes('이 장이 부록의 실질적 결론입니다. 내인성 호르몬의 생리와 약물의 약리는 연속선상에 있지만 동일하지 않습니다. 환자가 "원래 몸에 있는 호르몬이니 안전하다"고 이해하는 흔한 오해를 여기서 교정할 수 있습니다.');
+  }
+
+  // ============================================================
+  // SLIDE 19 — modifiers of secretion, and open debates
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, '분비를 바꾸는 요인과, 아직 정리되지 않은 논쟁');
+
+    const pw = (W - 2 * M - 0.40) / 2;
+    const py = 1.60, ph = 4.40;
+
+    card(s, pres, M, py, pw, ph, { fill: GREEN_TINT, line: 'C4E0D2' });
+    iconBadge(s, pres, M + 0.60, py + 0.58, 0.64, I.seedling, { bg: WHITE, scale: 0.46 });
+    s.addText([{ text: '분비를 늘리는 것으로 보고된 요인', options: {} }], {
+      x: M + 1.10, y: py + 0.32, w: pw - 1.45, h: 0.52, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 17, bold: true, color: GREEN, align: 'left', valign: 'middle',
+    });
+    s.addText([
+      { text: '식이섬유·발효성 탄수화물 — 대장 미생물이 만든 SCFA가 FFAR2/FFAR3를 자극합니다', options: { bullet: true, breakLine: true } },
+      { text: '비만대사수술(위우회술·위소매절제술) — 영양소가 원위 장에 빨리 도달해 식후 GLP-1이 크게 증가합니다', options: { bullet: true, breakLine: true } },
+      { text: 'DPP-4 억제제 — 분비를 늘리는 것이 아니라 분해를 막아 활성형 농도를 2~3배 수준으로 유지합니다', options: { bullet: true, breakLine: true } },
+      { text: '담즙산 신호 — 회장·대장에서 TGR5를 통해 분비를 자극합니다', options: { bullet: true } },
+    ], {
+      x: M + 0.42, y: py + 1.10, w: pw - 0.84, h: ph - 1.42, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 12, color: INK_SOFT, paraSpaceAfter: 12, lineSpacingMultiple: 1.3,
+      align: 'left', valign: 'top',
+    });
+
+    const rx = M + pw + 0.40;
+    card(s, pres, rx, py, pw, ph, { fill: AMBER_TINT, line: 'EBD9B4' });
+    iconBadge(s, pres, rx + 0.60, py + 0.58, 0.64, I.quest, { bg: WHITE, scale: 0.42 });
+    s.addText([{ text: '아직 논쟁 중인 것', options: {} }], {
+      x: rx + 1.10, y: py + 0.32, w: pw - 1.45, h: 0.52, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 17, bold: true, color: AMBER, align: 'left', valign: 'middle',
+    });
+    s.addText([
+      { text: '2형 당뇨에서 GLP-1 “분비”가 정말 감소하는가 — 메타분석에서는 일관된 감소가 확인되지 않았습니다. 인크레틴 효과 저하의 핵심은 분비 부족보다 GIP에 대한 β세포 반응 저하로 보는 견해가 우세합니다', options: { bullet: true, breakLine: true } },
+      { text: '조기 분비에서 신경·내분비 경로가 사람에게 기여하는 정도', options: { bullet: true, breakLine: true } },
+      { text: 'GLP-1(9-36)amide가 독자적 작용을 갖는지 여부', options: { bullet: true, breakLine: true } },
+      { text: '생리적 조건에서 내인성 GLP-1이 식욕에 기여하는 정도', options: { bullet: true } },
+    ], {
+      x: rx + 0.42, y: py + 1.10, w: pw - 0.84, h: ph - 1.42, isTextBox: true, margin: 0,
+      fontFace: K, fontSize: 12, color: INK_SOFT, paraSpaceAfter: 12, lineSpacingMultiple: 1.3,
+      align: 'left', valign: 'top',
+    });
+
+    footnote(s, '출처: Calanna S 외. Diabetologia 2013;56:965 · Gribble FM, Reimann F. Nat Rev Endocrinol 2019;15:226 · Nauck MA, Meier JJ. Diabetes Obes Metab 2018;20(Suppl 1):5.', { y: 6.22 });
+    s.addNotes('Calanna 등의 메타분석(Diabetologia 2013)은 2형 당뇨 환자에서 총 GLP-1 분비가 일관되게 감소하지는 않는다고 보고했습니다. 이는 "당뇨병은 GLP-1 결핍 질환"이라는 단순화된 서술을 교정하는 근거로 자주 인용됩니다. 비만대사수술 후 GLP-1 증가는 수술의 대사 효과를 설명하는 주요 가설 중 하나입니다.');
+  }
+
+  // ============================================================
+  // SLIDE 20 — appendix references
+  // ============================================================
+  {
+    const s = pres.addSlide();
+    s.background = { color: PAPER };
+    slideTitle(s, '심화 근거 자료');
+    kicker(s, '부록(12~19장)의 생리학 서술은 아래 종설과 메타분석에 근거했습니다.');
+
+    const refs = [
+      { tag: '생리', t: 'Holst JJ. The physiology of glucagon-like peptide 1. Physiol Rev. 2007;87(4):1409-1439.' },
+      { tag: 'L세포', t: 'Gribble FM, Reimann F. Function and mechanisms of enteroendocrine cells and gut hormones in metabolism. Nat Rev Endocrinol. 2019;15(4):226-237.' },
+      { tag: '기전', t: 'Drucker DJ. Mechanisms of Action and Therapeutic Application of Glucagon-like Peptide-1. Cell Metab. 2018;27(4):740-756.' },
+      { tag: '종설', t: 'Müller TD, Finan B, Bloom SR, 외. Glucagon-like peptide 1 (GLP-1). Mol Metab. 2019;30:72-130.' },
+      { tag: '인크레틴', t: 'Nauck MA, Meier JJ. Incretin hormones: Their role in health and disease. Diabetes Obes Metab. 2018;20(Suppl 1):5-21.' },
+      { tag: '논쟁', t: 'Calanna S, Christensen M, Holst JJ, 외. Secretion of glucagon-like peptide-1 in patients with type 2 diabetes mellitus: systematic review and meta-analyses of clinical studies. Diabetologia. 2013;56(5):965-972.' },
+    ];
+
+    const ry = 1.72, rh = 0.73, rgap = 0.055;
+    refs.forEach((r, i) => {
+      const y = ry + i * (rh + rgap);
+      card(s, pres, M, y, W - 2 * M, rh, { fill: WHITE, shadow: false });
+      s.addShape(pres.ShapeType.roundRect, {
+        x: M + 0.24, y: y + 0.21, w: 1.05, h: 0.31,
+        fill: { color: TEAL_TINT }, line: { type: 'none' }, rectRadius: 0.07,
+      });
+      s.addText([{ text: r.tag, options: {} }], {
+        x: M + 0.24, y: y + 0.21, w: 1.05, h: 0.31, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 9.5, bold: true, color: TEAL_DEEP, align: 'center', valign: 'middle',
+      });
+      s.addText([{ text: r.t, options: {} }], {
+        x: M + 1.44, y: y + 0.10, w: W - 2 * M - 1.74, h: 0.54, isTextBox: true, margin: 0,
+        fontFace: K, fontSize: 11, color: INK_SOFT, lineSpacingMultiple: 1.25,
+        align: 'left', valign: 'middle',
+      });
+    });
+
+    footnote(s, '10장(근거 자료)의 임상시험 문헌과 함께 보십시오. 수용체 분포와 세포내 신호전달은 상당 부분이 동물 자료에 근거하며, 사람에서 직접 확인된 범위는 더 좁습니다.', { y: 6.72 });
+    s.addNotes('부록의 서술은 대부분 권위 있는 종설에 근거했습니다. 원 논문 수준의 근거가 필요하면 각 종설의 인용 문헌을 따라가십시오.');
   }
 
   const out = process.argv[2] || 'GLP-1_작용기전_일반인설명.pptx';
