@@ -4,7 +4,8 @@ from __future__ import annotations
 import html as H, re, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
-import content as C
+import os, importlib
+C = importlib.import_module(os.environ.get("CONTENT_MODULE", "content"))
 
 BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
 

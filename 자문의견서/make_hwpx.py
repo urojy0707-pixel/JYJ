@@ -8,7 +8,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 sys.path.insert(0, str(Path(__file__).parent))
 
 from hwpx.document import HwpxDocument
-import content as C
+import os, importlib
+C = importlib.import_module(os.environ.get("CONTENT_MODULE", "content"))
 
 BODY_FONT = "맑은 고딕"
 INK      = "#1A1A1A"
