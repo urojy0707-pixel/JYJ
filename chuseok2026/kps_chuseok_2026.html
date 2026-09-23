@@ -78,145 +78,152 @@
   <div class="art" aria-hidden="true">
     <svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#1f2a4d"/>
-          <stop offset=".65" stop-color="#3d3f6b"/>
-          <stop offset="1" stop-color="#7a5a6e"/>
+        <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3b3a6e"/>
+          <stop offset=".45" stop-color="#b8687a"/>
+          <stop offset=".75" stop-color="#f0a86a"/>
+          <stop offset="1" stop-color="#f7d08a"/>
         </linearGradient>
-        <radialGradient id="glow" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#fff3c4" stop-opacity=".55"/>
-          <stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
+        <radialGradient id="kglow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#fff4cf" stop-opacity=".6"/>
+          <stop offset="1" stop-color="#fff4cf" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="moon" cx=".42" cy=".4" r=".62">
-          <stop offset="0" stop-color="#fffbe6"/>
-          <stop offset=".7" stop-color="#fbe7a8"/>
-          <stop offset="1" stop-color="#f1cf7c"/>
+        <radialGradient id="kmoon" cx=".4" cy=".38" r=".65">
+          <stop offset="0" stop-color="#fffdf0"/>
+          <stop offset=".75" stop-color="#fdeab4"/>
+          <stop offset="1" stop-color="#f4d088"/>
         </radialGradient>
-        <radialGradient id="persimmon" cx=".38" cy=".35" r=".7">
-          <stop offset="0" stop-color="#ffb35c"/>
-          <stop offset="1" stop-color="#e0621f"/>
-        </radialGradient>
+        <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#e2a93c"/>
+          <stop offset="1" stop-color="#b87420"/>
+        </linearGradient>
       </defs>
 
-      <!-- 밤하늘 -->
-      <rect width="720" height="440" fill="url(#sky)"/>
-      <g fill="#fff8dc">
-        <circle cx="90" cy="60" r="1.6"/><circle cx="160" cy="120" r="1.2"/>
-        <circle cx="250" cy="45" r="1.8"/><circle cx="330" cy="110" r="1.1"/>
-        <circle cx="610" cy="70" r="1.5"/><circle cx="660" cy="150" r="1.2"/>
-        <circle cx="560" cy="30" r="1.1"/><circle cx="40" cy="170" r="1.3"/>
-        <circle cx="690" cy="40" r="1.7"/><circle cx="210" cy="190" r="1"/>
+      <rect width="720" height="440" fill="url(#dusk)"/>
+      <g fill="#fff8e0" opacity=".8">
+        <circle cx="70" cy="40" r="1.5"/><circle cx="180" cy="70" r="1.2"/>
+        <circle cx="620" cy="50" r="1.4"/><circle cx="520" cy="28" r="1.1"/>
+        <circle cx="300" cy="30" r="1.3"/>
       </g>
 
-      <!-- 보름달 -->
-      <circle cx="450" cy="150" r="150" fill="url(#glow)"/>
-      <circle cx="450" cy="150" r="88" fill="url(#moon)"/>
-      <g fill="#e9c877" opacity=".45">
-        <circle cx="420" cy="130" r="14"/><circle cx="478" cy="175" r="10"/>
-        <circle cx="470" cy="118" r="7"/><circle cx="430" cy="185" r="6"/>
+      <!-- 떠오르는 보름달 -->
+      <circle cx="250" cy="170" r="140" fill="url(#kglow)"/>
+      <circle cx="250" cy="170" r="80" fill="url(#kmoon)"/>
+      <g fill="#ecd08c" opacity=".45">
+        <circle cx="225" cy="150" r="13"/><circle cx="275" cy="190" r="9"/>
+        <circle cx="268" cy="140" r="6"/><circle cx="232" cy="198" r="5"/>
       </g>
-      <!-- 달 속 떡방아 찧는 옥토끼 -->
-      <g fill="#d9b25e" opacity=".55">
-        <ellipse cx="432" cy="160" rx="13" ry="16"/>
-        <circle cx="440" cy="140" r="9"/>
-        <ellipse cx="436" cy="124" rx="3" ry="11" transform="rotate(-12 436 124)"/>
-        <ellipse cx="444" cy="125" rx="3" ry="10" transform="rotate(10 444 125)"/>
-        <rect x="446" y="146" width="22" height="4" rx="2" transform="rotate(-35 446 146)"/>
-        <path d="M458 168 h24 l-4 16 h-16 z"/>
+
+      <!-- 기러기 떼 -->
+      <g stroke="#3a2e4a" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M440 90 q8 -8 16 0 q8 -8 16 0"/>
+        <path d="M478 110 q7 -7 14 0 q7 -7 14 0"/>
+        <path d="M508 128 q6 -6 12 0 q6 -6 12 0"/>
+        <path d="M470 70 q6 -6 12 0 q6 -6 12 0"/>
+        <path d="M500 52 q5 -5 10 0 q5 -5 10 0"/>
       </g>
 
       <!-- 먼 산 -->
-      <path d="M0 300 C 90 240, 170 250, 250 285 S 420 230, 520 270 S 660 240, 720 262 V440 H0 Z" fill="#3a3558"/>
-      <path d="M0 330 C 120 290, 230 300, 330 320 S 540 290, 720 318 V440 H0 Z" fill="#4a3f5c"/>
+      <path d="M0 250 C 80 205, 160 215, 240 245 S 400 200, 500 232 S 650 205, 720 225 V440 H0 Z" fill="#8a5a78" opacity=".85"/>
+      <path d="M0 275 C 120 245, 240 255, 360 272 S 580 245, 720 262 V440 H0 Z" fill="#6f4a66"/>
 
-      <!-- 감나무 가지 -->
+      <!-- 한옥 -->
       <g>
-        <path d="M0 40 C 60 55, 110 70, 170 110 C 200 130, 225 150, 240 175" stroke="#4a3322" stroke-width="7" fill="none" stroke-linecap="round"/>
-        <path d="M95 70 C 110 95, 115 115, 112 135" stroke="#4a3322" stroke-width="4" fill="none" stroke-linecap="round"/>
-        <path d="M185 122 C 205 118, 222 112, 240 100" stroke="#4a3322" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <g fill="#5c7a3a">
-          <ellipse cx="60" cy="42" rx="20" ry="8" transform="rotate(-20 60 42)"/>
-          <ellipse cx="140" cy="78" rx="22" ry="8" transform="rotate(25 140 78)"/>
-          <ellipse cx="230" cy="95" rx="18" ry="7" transform="rotate(-30 230 95)"/>
-          <ellipse cx="205" cy="150" rx="18" ry="7" transform="rotate(50 205 150)"/>
+        <rect x="470" y="238" width="170" height="44" fill="#f3e6cc"/>
+        <g fill="#8a5a3a">
+          <rect x="470" y="238" width="6" height="44"/><rect x="524" y="238" width="6" height="44"/>
+          <rect x="580" y="238" width="6" height="44"/><rect x="634" y="238" width="6" height="44"/>
         </g>
-        <g>
-          <circle cx="112" cy="150" r="17" fill="url(#persimmon)"/>
-          <path d="M103 135 l9 4 l9 -4 l-4 7 h-10 z" fill="#4f6a2e"/>
-          <circle cx="170" cy="130" r="15" fill="url(#persimmon)"/>
-          <path d="M162 116 l8 4 l8 -4 l-4 6 h-8 z" fill="#4f6a2e"/>
-          <circle cx="242" cy="192" r="16" fill="url(#persimmon)"/>
-          <path d="M234 177 l8 4 l8 -4 l-4 6 h-8 z" fill="#4f6a2e"/>
+        <g fill="#f7c873" opacity=".95">
+          <rect x="484" y="248" width="32" height="26"/><rect x="540" y="248" width="32" height="26"/>
+          <rect x="594" y="248" width="32" height="26"/>
         </g>
+        <g stroke="#8a5a3a" stroke-width="1.2">
+          <path d="M500 248 v26 M484 261 h32 M556 248 v26 M540 261 h32 M610 248 v26 M594 261 h32"/>
+        </g>
+        <path d="M440 240 C 470 230, 500 212, 520 204 H 590 C 610 212, 640 230, 670 240 C 660 232, 655 226, 652 222 H 458 C 455 226, 450 232, 440 240 Z" fill="#3a3040"/>
+        <path d="M452 222 C 480 210, 505 196, 522 190 H 588 C 605 196, 630 210, 658 222 Z" fill="#4a3d52"/>
+        <path d="M518 190 h74" stroke="#2a2230" stroke-width="5" stroke-linecap="round"/>
+        <rect x="455" y="282" width="200" height="8" fill="#b9a58a"/>
       </g>
 
-      <!-- 억새 -->
-      <g stroke="#d9c6a0" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85">
-        <path d="M640 440 C 640 380, 650 340, 675 305"/>
-        <path d="M660 440 C 662 390, 672 360, 700 330"/>
-        <path d="M620 440 C 615 395, 605 360, 585 330"/>
+      <!-- 황금 들녘 -->
+      <path d="M0 300 C 140 285, 300 292, 440 300 S 640 290, 720 296 V440 H0 Z" fill="url(#field)"/>
+      <g stroke="#f4c75a" stroke-width="1.4" opacity=".7" fill="none">
+        <path d="M0 330 C 160 318, 360 326, 720 318"/>
+        <path d="M0 362 C 200 350, 420 360, 720 350"/>
+        <path d="M0 396 C 220 384, 460 394, 720 384"/>
       </g>
-      <g fill="#efe0bf" opacity=".85">
-        <ellipse cx="678" cy="300" rx="6" ry="16" transform="rotate(35 678 300)"/>
-        <ellipse cx="703" cy="325" rx="5" ry="14" transform="rotate(45 703 325)"/>
-        <ellipse cx="582" cy="325" rx="5" ry="15" transform="rotate(-35 582 325)"/>
+      <!-- 벼 이삭 -->
+      <g stroke="#8a5a16" stroke-width="1.6" fill="none" stroke-linecap="round">
+        <path d="M60 440 C 60 400, 64 380, 78 362"/>
+        <path d="M84 440 C 84 405, 90 388, 104 372"/>
+        <path d="M660 440 C 660 402, 654 382, 640 366"/>
+      </g>
+      <g fill="#e8b440">
+        <ellipse cx="80" cy="360" rx="4" ry="7" transform="rotate(40 80 360)"/>
+        <ellipse cx="86" cy="368" rx="4" ry="7" transform="rotate(40 86 368)"/>
+        <ellipse cx="106" cy="370" rx="4" ry="7" transform="rotate(40 106 370)"/>
+        <ellipse cx="112" cy="378" rx="4" ry="7" transform="rotate(40 112 378)"/>
+        <ellipse cx="638" cy="364" rx="4" ry="7" transform="rotate(-40 638 364)"/>
+        <ellipse cx="632" cy="372" rx="4" ry="7" transform="rotate(-40 632 372)"/>
       </g>
 
-      <!-- 언덕 -->
-      <path d="M0 380 C 150 340, 300 350, 420 372 S 620 360, 720 380 V440 H0 Z" fill="#5b4a50"/>
-
-      <!-- 달을 바라보는 토끼 가족 -->
-      <g fill="#f7f1e6">
-        <!-- 큰 토끼 -->
-        <ellipse cx="300" cy="352" rx="22" ry="19"/>
-        <circle cx="316" cy="330" r="12"/>
-        <ellipse cx="312" cy="308" rx="4.5" ry="15" transform="rotate(-8 312 308)"/>
-        <ellipse cx="322" cy="309" rx="4.5" ry="14" transform="rotate(14 322 309)"/>
-        <circle cx="279" cy="356" r="6"/>
-        <!-- 작은 토끼 -->
-        <ellipse cx="352" cy="360" rx="14" ry="12"/>
-        <circle cx="362" cy="346" r="8"/>
-        <ellipse cx="359" cy="332" rx="3" ry="10" transform="rotate(-6 359 332)"/>
-        <ellipse cx="366" cy="333" rx="3" ry="9" transform="rotate(16 366 333)"/>
-      </g>
-      <g fill="#f2a9a0">
-        <ellipse cx="312" cy="309" rx="1.8" ry="10" transform="rotate(-8 312 309)"/>
-        <ellipse cx="322" cy="310" rx="1.8" ry="9" transform="rotate(14 322 310)"/>
-        <circle cx="325" cy="334" r="2.2" opacity=".7"/>
-      </g>
-      <circle cx="320" cy="327" r="1.7" fill="#3b2f28"/>
-      <circle cx="365" cy="344" r="1.3" fill="#3b2f28"/>
-
-      <!-- 소반 위 송편 -->
+      <!-- 코스모스 -->
       <g>
-        <ellipse cx="520" cy="418" rx="92" ry="14" fill="#3a2a22" opacity=".45"/>
-        <rect x="440" y="386" width="160" height="16" rx="8" fill="#8a4b2b"/>
-        <rect x="455" y="400" width="10" height="34" fill="#6e3a21"/>
-        <rect x="575" y="400" width="10" height="34" fill="#6e3a21"/>
-        <ellipse cx="520" cy="384" rx="64" ry="10" fill="#e9e1d0"/>
-        <g stroke="#fff" stroke-opacity=".5" stroke-width="1">
-          <path d="M480 382 q14 -26 30 0 z" fill="#f4efe4"/>
-          <path d="M504 381 q14 -26 30 0 z" fill="#f2b8c0"/>
-          <path d="M528 382 q14 -26 30 0 z" fill="#b9d49a"/>
-          <path d="M492 376 q13 -22 26 0 z" fill="#f7d98a"/>
-          <path d="M518 375 q13 -22 26 0 z" fill="#f4efe4"/>
-          <path d="M505 368 q13 -20 26 0 z" fill="#c8b3e0"/>
+        <g stroke="#5d7a3a" stroke-width="2" fill="none">
+          <path d="M180 440 C 182 410, 186 395, 190 380"/>
+          <path d="M215 440 C 214 418, 212 405, 208 395"/>
+          <path d="M150 440 C 150 420, 146 410, 140 400"/>
+          <path d="M540 440 C 542 415, 548 400, 552 388"/>
+          <path d="M575 440 C 574 420, 570 410, 566 402"/>
         </g>
-        <g fill="#6d8f3e">
-          <ellipse cx="470" cy="383" rx="10" ry="3.5" transform="rotate(-15 470 383)"/>
-          <ellipse cx="570" cy="383" rx="10" ry="3.5" transform="rotate(15 570 383)"/>
+        <g id="cos1" transform="translate(190 378)">
+          <g fill="#f29bb5">
+            <ellipse cx="0" cy="-9" rx="4.5" ry="8"/><ellipse cx="0" cy="9" rx="4.5" ry="8"/>
+            <ellipse cx="-9" cy="0" rx="8" ry="4.5"/><ellipse cx="9" cy="0" rx="8" ry="4.5"/>
+            <ellipse cx="-6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(-45 -6.5 -6.5)"/>
+            <ellipse cx="6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(-45 6.5 6.5)"/>
+            <ellipse cx="6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(45 6.5 -6.5)"/>
+            <ellipse cx="-6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(45 -6.5 6.5)"/>
+          </g>
+          <circle r="3.5" fill="#f2c230"/>
         </g>
-      </g>
-
-      <!-- 청사초롱 -->
-      <g>
-        <line x1="640" y1="0" x2="640" y2="176" stroke="#2b2438" stroke-width="2"/>
-        <circle cx="640" cy="215" r="40" fill="url(#glow)"/>
-        <rect x="620" y="176" width="40" height="10" rx="3" fill="#2b2438"/>
-        <path d="M620 186 h40 v28 h-40 z" fill="#2f5f9e"/>
-        <path d="M620 214 h40 v28 h-40 z" fill="#c23b3b"/>
-        <rect x="620" y="242" width="40" height="8" rx="3" fill="#2b2438"/>
-        <line x1="640" y1="250" x2="640" y2="268" stroke="#c23b3b" stroke-width="2"/>
+        <use href="#cos1" transform="translate(18 16) scale(.8)" style="filter:hue-rotate(0deg)"/>
+        <g transform="translate(208 393) scale(.8)">
+          <g fill="#ffffff">
+            <ellipse cx="0" cy="-9" rx="4.5" ry="8"/><ellipse cx="0" cy="9" rx="4.5" ry="8"/>
+            <ellipse cx="-9" cy="0" rx="8" ry="4.5"/><ellipse cx="9" cy="0" rx="8" ry="4.5"/>
+            <ellipse cx="-6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(-45 -6.5 -6.5)"/>
+            <ellipse cx="6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(-45 6.5 6.5)"/>
+            <ellipse cx="6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(45 6.5 -6.5)"/>
+            <ellipse cx="-6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(45 -6.5 6.5)"/>
+          </g>
+          <circle r="3.5" fill="#f2c230"/>
+        </g>
+        <g transform="translate(140 398) scale(.75)">
+          <g fill="#c9437a">
+            <ellipse cx="0" cy="-9" rx="4.5" ry="8"/><ellipse cx="0" cy="9" rx="4.5" ry="8"/>
+            <ellipse cx="-9" cy="0" rx="8" ry="4.5"/><ellipse cx="9" cy="0" rx="8" ry="4.5"/>
+            <ellipse cx="-6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(-45 -6.5 -6.5)"/>
+            <ellipse cx="6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(-45 6.5 6.5)"/>
+            <ellipse cx="6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(45 6.5 -6.5)"/>
+            <ellipse cx="-6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(45 -6.5 6.5)"/>
+          </g>
+          <circle r="3.5" fill="#f2c230"/>
+        </g>
+        <use href="#cos1" transform="translate(362 8)"/>
+        <g transform="translate(566 400) scale(.8)">
+          <g fill="#ffffff">
+            <ellipse cx="0" cy="-9" rx="4.5" ry="8"/><ellipse cx="0" cy="9" rx="4.5" ry="8"/>
+            <ellipse cx="-9" cy="0" rx="8" ry="4.5"/><ellipse cx="9" cy="0" rx="8" ry="4.5"/>
+            <ellipse cx="-6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(-45 -6.5 -6.5)"/>
+            <ellipse cx="6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(-45 6.5 6.5)"/>
+            <ellipse cx="6.5" cy="-6.5" rx="4" ry="7.5" transform="rotate(45 6.5 -6.5)"/>
+            <ellipse cx="-6.5" cy="6.5" rx="4" ry="7.5" transform="rotate(45 -6.5 6.5)"/>
+          </g>
+          <circle r="3.5" fill="#f2c230"/>
+        </g>
       </g>
     </svg>
   </div>
@@ -240,7 +247,7 @@
 
     <div class="sign">
       2026년 한가위를 맞으며<br>
-      <strong>대한전립선학회 회장 정재영 드림</strong>
+      <strong>대한전립선학회 정재영 드림</strong>
     </div>
   </div>
 </article>
