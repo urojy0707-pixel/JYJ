@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전립선학회 한가위 인사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #efe6d6;
+    --paper: #fbf6ec;
+    --ink: #3b2f28;
+    --ink-soft: #6b5a4d;
+    --accent: #b5452b;
+    --gold: #c8962e;
+    --line: #e2d5bf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1a24; --paper: #25232f; --ink: #f1e8da; --ink-soft: #c9bba8;
+      --accent: #e98a6c; --gold: #e2b85a; --line: #3a3746;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1a24; --paper: #25232f; --ink: #f1e8da; --ink-soft: #c9bba8;
+    --accent: #e98a6c; --gold: #e2b85a; --line: #3a3746;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Gowun Batang", "Nanum Myeongjo", "WenQuanYi Zen Hei", serif;
+    display: flex; justify-content: center; padding: 32px 16px;
+  }
+  .card {
+    width: 100%; max-width: 720px; background: var(--paper);
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 10px 40px rgba(60, 40, 20, .18);
+  }
+  .art svg { display: block; width: 100%; height: auto; }
+  .body { padding: 36px 44px 44px; }
+  .eyebrow {
+    color: var(--accent); letter-spacing: .25em; font-size: 14px;
+    text-align: center; margin: 0 0 8px;
+  }
+  h1 {
+    font-family: "Nanum Myeongjo", "Gowun Batang", serif; font-weight: 800;
+    font-size: clamp(26px, 5vw, 36px); text-align: center; margin: 0 0 28px; line-height: 1.35;
+  }
+  .divider { display: flex; align-items: center; gap: 12px; margin: 0 auto 28px; max-width: 240px; }
+  .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .divider span { color: var(--gold); font-size: 18px; }
+  p { font-size: 17px; line-height: 1.95; margin: 0 0 18px; word-break: keep-all; }
+  .greet { font-weight: 700; font-size: 18px; }
+  blockquote {
+    margin: 28px 0; padding: 18px 20px; text-align: center;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    color: var(--accent); font-size: 18px; line-height: 1.7; font-weight: 700;
+  }
+  .sign { text-align: right; margin-top: 32px; color: var(--ink-soft); line-height: 1.9; }
+  .sign strong { color: var(--ink); font-size: 19px; }
+  @media (max-width: 520px) {
+    .body { padding: 28px 22px 34px; }
+    p { font-size: 16px; }
+  }
+  @page { size: 800px 1260px; margin: 0; }
+  @media print {
+    :root { --bg: #efe6d6; --paper: #fbf6ec; --ink: #3b2f28; --ink-soft: #6b5a4d;
+            --accent: #b5452b; --gold: #c8962e; --line: #e2d5bf; }
+    html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card { box-shadow: none; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<article class="card">
+  <div class="art" aria-hidden="true">
+    <svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1f2a4d"/>
+          <stop offset=".65" stop-color="#3d3f6b"/>
+          <stop offset="1" stop-color="#7a5a6e"/>
+        </linearGradient>
+        <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#fff3c4" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="moon" cx=".42" cy=".4" r=".62">
+          <stop offset="0" stop-color="#fffbe6"/>
+          <stop offset=".7" stop-color="#fbe7a8"/>
+          <stop offset="1" stop-color="#f1cf7c"/>
+        </radialGradient>
+        <radialGradient id="persimmon" cx=".38" cy=".35" r=".7">
+          <stop offset="0" stop-color="#ffb35c"/>
+          <stop offset="1" stop-color="#e0621f"/>
+        </radialGradient>
+      </defs>
+
+      <!-- 밤하늘 -->
+      <rect width="720" height="440" fill="url(#sky)"/>
+      <g fill="#fff8dc">
+        <circle cx="90" cy="60" r="1.6"/><circle cx="160" cy="120" r="1.2"/>
+        <circle cx="250" cy="45" r="1.8"/><circle cx="330" cy="110" r="1.1"/>
+        <circle cx="610" cy="70" r="1.5"/><circle cx="660" cy="150" r="1.2"/>
+        <circle cx="560" cy="30" r="1.1"/><circle cx="40" cy="170" r="1.3"/>
+        <circle cx="690" cy="40" r="1.7"/><circle cx="210" cy="190" r="1"/>
+      </g>
+
+      <!-- 보름달 -->
+      <circle cx="450" cy="150" r="150" fill="url(#glow)"/>
+      <circle cx="450" cy="150" r="88" fill="url(#moon)"/>
+      <g fill="#e9c877" opacity=".45">
+        <circle cx="420" cy="130" r="14"/><circle cx="478" cy="175" r="10"/>
+        <circle cx="470" cy="118" r="7"/><circle cx="430" cy="185" r="6"/>
+      </g>
+      <!-- 달 속 떡방아 찧는 옥토끼 -->
+      <g fill="#d9b25e" opacity=".55">
+        <ellipse cx="432" cy="160" rx="13" ry="16"/>
+        <circle cx="440" cy="140" r="9"/>
+        <ellipse cx="436" cy="124" rx="3" ry="11" transform="rotate(-12 436 124)"/>
+        <ellipse cx="444" cy="125" rx="3" ry="10" transform="rotate(10 444 125)"/>
+        <rect x="446" y="146" width="22" height="4" rx="2" transform="rotate(-35 446 146)"/>
+        <path d="M458 168 h24 l-4 16 h-16 z"/>
+      </g>
+
+      <!-- 먼 산 -->
+      <path d="M0 300 C 90 240, 170 250, 250 285 S 420 230, 520 270 S 660 240, 720 262 V440 H0 Z" fill="#3a3558"/>
+      <path d="M0 330 C 120 290, 230 300, 330 320 S 540 290, 720 318 V440 H0 Z" fill="#4a3f5c"/>
+
+      <!-- 감나무 가지 -->
+      <g>
+        <path d="M0 40 C 60 55, 110 70, 170 110 C 200 130, 225 150, 240 175" stroke="#4a3322" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M95 70 C 110 95, 115 115, 112 135" stroke="#4a3322" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M185 122 C 205 118, 222 112, 240 100" stroke="#4a3322" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <g fill="#5c7a3a">
+          <ellipse cx="60" cy="42" rx="20" ry="8" transform="rotate(-20 60 42)"/>
+          <ellipse cx="140" cy="78" rx="22" ry="8" transform="rotate(25 140 78)"/>
+          <ellipse cx="230" cy="95" rx="18" ry="7" transform="rotate(-30 230 95)"/>
+          <ellipse cx="205" cy="150" rx="18" ry="7" transform="rotate(50 205 150)"/>
+        </g>
+        <g>
+          <circle cx="112" cy="150" r="17" fill="url(#persimmon)"/>
+          <path d="M103 135 l9 4 l9 -4 l-4 7 h-10 z" fill="#4f6a2e"/>
+          <circle cx="170" cy="130" r="15" fill="url(#persimmon)"/>
+          <path d="M162 116 l8 4 l8 -4 l-4 6 h-8 z" fill="#4f6a2e"/>
+          <circle cx="242" cy="192" r="16" fill="url(#persimmon)"/>
+          <path d="M234 177 l8 4 l8 -4 l-4 6 h-8 z" fill="#4f6a2e"/>
+        </g>
+      </g>
+
+      <!-- 억새 -->
+      <g stroke="#d9c6a0" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85">
+        <path d="M640 440 C 640 380, 650 340, 675 305"/>
+        <path d="M660 440 C 662 390, 672 360, 700 330"/>
+        <path d="M620 440 C 615 395, 605 360, 585 330"/>
+      </g>
+      <g fill="#efe0bf" opacity=".85">
+        <ellipse cx="678" cy="300" rx="6" ry="16" transform="rotate(35 678 300)"/>
+        <ellipse cx="703" cy="325" rx="5" ry="14" transform="rotate(45 703 325)"/>
+        <ellipse cx="582" cy="325" rx="5" ry="15" transform="rotate(-35 582 325)"/>
+      </g>
+
+      <!-- 언덕 -->
+      <path d="M0 380 C 150 340, 300 350, 420 372 S 620 360, 720 380 V440 H0 Z" fill="#5b4a50"/>
+
+      <!-- 달을 바라보는 토끼 가족 -->
+      <g fill="#f7f1e6">
+        <!-- 큰 토끼 -->
+        <ellipse cx="300" cy="352" rx="22" ry="19"/>
+        <circle cx="316" cy="330" r="12"/>
+        <ellipse cx="312" cy="308" rx="4.5" ry="15" transform="rotate(-8 312 308)"/>
+        <ellipse cx="322" cy="309" rx="4.5" ry="14" transform="rotate(14 322 309)"/>
+        <circle cx="279" cy="356" r="6"/>
+        <!-- 작은 토끼 -->
+        <ellipse cx="352" cy="360" rx="14" ry="12"/>
+        <circle cx="362" cy="346" r="8"/>
+        <ellipse cx="359" cy="332" rx="3" ry="10" transform="rotate(-6 359 332)"/>
+        <ellipse cx="366" cy="333" rx="3" ry="9" transform="rotate(16 366 333)"/>
+      </g>
+      <g fill="#f2a9a0">
+        <ellipse cx="312" cy="309" rx="1.8" ry="10" transform="rotate(-8 312 309)"/>
+        <ellipse cx="322" cy="310" rx="1.8" ry="9" transform="rotate(14 322 310)"/>
+        <circle cx="325" cy="334" r="2.2" opacity=".7"/>
+      </g>
+      <circle cx="320" cy="327" r="1.7" fill="#3b2f28"/>
+      <circle cx="365" cy="344" r="1.3" fill="#3b2f28"/>
+
+      <!-- 소반 위 송편 -->
+      <g>
+        <ellipse cx="520" cy="418" rx="92" ry="14" fill="#3a2a22" opacity=".45"/>
+        <rect x="440" y="386" width="160" height="16" rx="8" fill="#8a4b2b"/>
+        <rect x="455" y="400" width="10" height="34" fill="#6e3a21"/>
+        <rect x="575" y="400" width="10" height="34" fill="#6e3a21"/>
+        <ellipse cx="520" cy="384" rx="64" ry="10" fill="#e9e1d0"/>
+        <g stroke="#fff" stroke-opacity=".5" stroke-width="1">
+          <path d="M480 382 q14 -26 30 0 z" fill="#f4efe4"/>
+          <path d="M504 381 q14 -26 30 0 z" fill="#f2b8c0"/>
+          <path d="M528 382 q14 -26 30 0 z" fill="#b9d49a"/>
+          <path d="M492 376 q13 -22 26 0 z" fill="#f7d98a"/>
+          <path d="M518 375 q13 -22 26 0 z" fill="#f4efe4"/>
+          <path d="M505 368 q13 -20 26 0 z" fill="#c8b3e0"/>
+        </g>
+        <g fill="#6d8f3e">
+          <ellipse cx="470" cy="383" rx="10" ry="3.5" transform="rotate(-15 470 383)"/>
+          <ellipse cx="570" cy="383" rx="10" ry="3.5" transform="rotate(15 570 383)"/>
+        </g>
+      </g>
+
+      <!-- 청사초롱 -->
+      <g>
+        <line x1="640" y1="0" x2="640" y2="176" stroke="#2b2438" stroke-width="2"/>
+        <circle cx="640" cy="215" r="40" fill="url(#glow)"/>
+        <rect x="620" y="176" width="40" height="10" rx="3" fill="#2b2438"/>
+        <path d="M620 186 h40 v28 h-40 z" fill="#2f5f9e"/>
+        <path d="M620 214 h40 v28 h-40 z" fill="#c23b3b"/>
+        <rect x="620" y="242" width="40" height="8" rx="3" fill="#2b2438"/>
+        <line x1="640" y1="250" x2="640" y2="268" stroke="#c23b3b" stroke-width="2"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="body">
+    <p class="eyebrow">대한전립선학회 · 2026 한가위</p>
+    <h1>보름달처럼 넉넉하고<br>따뜻한 한가위 되십시오</h1>
+    <div class="divider"><span>◆</span></div>
+
+    <p class="greet">대한전립선학회 회원 여러분께</p>
+
+    <p>황금빛 들녘과 함께 풍성한 한가위가 찾아왔습니다.
+    한 해 동안 진료와 연구의 현장에서 학회와 함께해 주신 회원 여러분께 깊이 감사드립니다.</p>
+
+    <p>이번 추석에는 잠시 무거운 짐을 내려놓으시고, 사랑하는 가족과 함께
+    편안하고 넉넉한 시간 보내시기 바랍니다.</p>
+
+    <blockquote>더도 말고 덜도 말고, 늘 한가위만 같아라</blockquote>
+
+    <p>회원 여러분과 가정에 건강과 행복이 보름달처럼 가득하시기를 기원합니다.</p>
+
+    <div class="sign">
+      2026년 한가위를 맞으며<br>
+      <strong>대한전립선학회 회장 정재영 드림</strong>
+    </div>
+  </div>
+</article>
+</body>
+</html>
