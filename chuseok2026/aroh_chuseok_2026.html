@@ -64,6 +64,13 @@
     .body { padding: 28px 22px 34px; }
     p { font-size: 16px; }
   }
+  @page { size: 800px 1700px; margin: 0; }
+  @media print {
+    :root { --bg: #efe6d6; --paper: #fbf6ec; --ink: #3b2f28; --ink-soft: #6b5a4d;
+            --accent: #b5452b; --gold: #c8962e; --line: #e2d5bf; }
+    html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card { box-shadow: none; break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
